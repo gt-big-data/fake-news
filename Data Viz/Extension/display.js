@@ -1,17 +1,22 @@
 function call_py() {
     let seltext = localStorage.getItem('seltext');
-    if (seltext != null) {
-        chrome.tabs.create({url: ' http://127.0.0.1:5000/get-results?claim=' + seltext});
-    }
+    const data = {seltext};
+    alert(seltext)
+    fetch('http://localhost:5000/send', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body : JSON.stringify(data),
+    }).then(res => res.json().then(data => {
+      localStorage.setItem('prediction', data.prediction)
+    }))
 }
 
 window.onload = function(){
+    //document.getElementById('run').onclick = call_py
     let seltext = localStorage.getItem('seltext');
-    console.log(seltext);
-    document.getElementById("run").onclick = call_py;
-    if (seltext != null) {
-        document.getElementById('highlighted').innerHTML = seltext;
-    } else {
-        document.getElementById('highlighted').innerHTML = "No text has been highlighted";
-    }
+    let prediction = localStorage.getItem('prediction')
+    document.getElementById('highlighted').innerHTML = "Highlighted Text: " + seltext;
+    document.getElementById('prediction').innerHTML = "Prediction: " + prediction;
 };
