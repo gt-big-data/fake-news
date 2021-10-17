@@ -28,6 +28,7 @@ PATH = '/content/drive/MyDrive/College/BDBI/FakeNews/'
 
 PATH = '/content/drive/MyDrive/Georgia Tech (1)/code/datasets/'
 
+# this is a comment to test if changes work
 RANDOM_SEED = 42
 numpy.random.seed(RANDOM_SEED)
 tf.random.set_seed(RANDOM_SEED)
