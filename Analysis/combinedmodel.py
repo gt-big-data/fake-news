@@ -279,9 +279,9 @@ print(bodies_model.output)
 print(headlines_model.output)
 finalModel = Concatenate()([bodies_model.output, headlines_model.output])
 finalModel = Flatten()(finalModel)
-finalModel = Dense(1024, activation='relu') (finalModel)
-finalModel = Dense(1024, activation='relu') (finalModel)
-finalModel = Dense(1024, activation='relu') (finalModel)
+finalModel = Dense(1024, activation='relu', kernel_regularizer=regularizers.l2(0.001)) (finalModel)
+finalModel = Dense(1024, activation='relu', kernel_regularizer=regularizers.l2(0.001)) (finalModel)
+finalModel = Dense(1024, activation='relu', kernel_regularizer=regularizers.l2(0.001)) (finalModel)
 finalModel = Dense(4, activation='softmax') (finalModel)
 #0,1,2,3
 #0: [1,0,0,0]
